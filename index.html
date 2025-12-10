@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes Sociales</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            background: linear-gradient(135deg, #001a33dd, #003366dd);(135deg, #001a33, #003366);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        #header {
+            padding: 25px;
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+            animation: fadeIn 1.8s;
+        }
+
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+            animation: slideUp 1.5s;
+        }
+
+        .icon-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.35);
+            padding: 20px;
+            width: 130px;
+            border-radius: 15px;
+            backdrop-filter: blur(6px);
+            transition: transform 0.3s, background 0.3s;
+            animation: pop 1.2s;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+    
+        .icon-img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    
+        /* Fondo animado */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.35);
+            animation: floatShapes 12s linear infinite;
+            backdrop-filter: blur(2px);
+        }
+
+        @keyframes floatShapes {
+            0% { transform: translateY(130vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-30vh) rotate(360deg); opacity: 0; }
+        } {
+            0% { transform: translateY(120vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Movimiento 3D con giroscopio */
+        @keyframes tilt {
+            from { transform: rotateX(0) rotateY(0); }
+            to { transform: rotateX(0) rotateY(0); }
+        }
+
+        .tilt-wrapper {
+            width: 100%;
+            height: 100%;
+            perspective: 900px;
+        }
+
+        .tilt-content {
+            height: 100%;
+            width: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease-out;
+        }
+
+</style>
+</head>
+<body>
+    <div class="tilt-wrapper">
+        <div class="tilt-content">
+    <div class="background">
+        <div class="shape" style="left: 5%; animation-duration: 11s; animation-delay: 0s;"></div>
+        <div class="shape" style="left: 20%; animation-duration: 14s; animation-delay: 2s;"></div>
+        <div class="shape" style="left: 35%; animation-duration: 10s; animation-delay: 4s;"></div>
+        <div class="shape" style="left: 50%; animation-duration: 13s; animation-delay: 1s;"></div>
+        <div class="shape" style="left: 65%; animation-duration: 16s; animation-delay: 3s;"></div>
+        <div class="shape" style="left: 80%; animation-duration: 12s; animation-delay: 5s;"></div>
+    </div>
+    <div id="header">Síguenos en Redes Sociales</div>
+
+    <div class="icons-container">
+        <a class="icon-card" href="https://www.youtube.com/user/IDILSA" target="_blank" style="background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(255,0,0,0.5);">
+            YouTube
+        </a>
+
+        <a class="icon-card" href="https://www.instagram.com/idilsa1998/?igsh=MTN5azRlcmlvZWszeg%3D%3D#" target="_blank" style="background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(193,53,132,0.5);">
+            Instagram
+        </a>
+
+        <a class="icon-card" href="https://es-la.facebook.com/idilsa.ingenieriadisenolubricacion" target="_blank" style="background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(24,119,242,0.5);">
+            Facebook
+        </a>
+
+        <a class="icon-card" href="https://x.com/idilsa" target="_blank" style="background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(0,0,0,0.5);">
+            X (Twitter)
+        </a>
+
+        <a class="icon-card" href="https://api.whatsapp.com/send?phone=525546106384" target="_blank" style="background: rgba(255, 255, 255, 0.35); border: 1px solid rgba(37,211,102,0.5);">
+            WhatsApp
+        </a>
+    </div>
+        </div>
+    </div>
+
+    <script>
+        // Efecto 3D con el giroscopio del celular
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', function(event) {
+                const tiltX = event.gamma / 6;
+                const tiltY = event.beta / 6;
+
+                document.querySelector('.tilt-content').style.transform =
+                    `rotateX(${tiltY}deg) rotateY(${tiltX}deg)`;
+            });
+        }
+    </script>
+</body>
+</html>
