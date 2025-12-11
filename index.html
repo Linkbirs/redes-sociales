@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redes Sociales Móviles</title>
+<title>Redes Sociales Compacto</title>
 <style>
     /* ================= BODY ================= */
     body, html {
@@ -17,7 +17,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         background: #001a33;
         position: relative;
     }
@@ -52,18 +52,18 @@
 
     /* ================= HEADER ================= */
     #header {
-        margin-top: 35px;
-        font-size: 1.8em;
+        font-size: 1.6em;
         font-weight: bold;
         text-align: center;
         z-index: 2;
         position: relative;
         animation: fadeIn 1.5s ease-out;
+        margin-bottom: 20px;
         padding: 0 15px;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-15px); }
+        from { opacity: 0; transform: translateY(-10px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
@@ -72,8 +72,7 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 18px;
-        margin-top: 30px;
+        gap: 12px;
         z-index: 2;
         position: relative;
     }
@@ -85,8 +84,8 @@
         justify-content: center;
         text-decoration: none;
         color: white;
-        padding: 18px;
-        width: 120px;
+        padding: 14px;
+        min-width: 100px;
         border-radius: 12px;
         font-weight: bold;
         text-align: center;
@@ -94,10 +93,11 @@
         transition: all 0.25s ease;
         box-shadow: 0 6px 18px rgba(0,0,0,0.2);
         background: rgba(255,255,255,0.15);
+        font-size: 0.9em;
     }
 
     .icon-card:hover {
-        transform: translateY(-6px) scale(1.03);
+        transform: translateY(-5px) scale(1.03);
         background: rgba(255,255,255,0.25);
         box-shadow: 0 10px 22px rgba(0,0,0,0.3);
     }
@@ -111,13 +111,7 @@
 
     /* ================= RESPONSIVE MOVIL ================= */
     @media(max-width:480px){
-        #header { font-size: 1.4em; margin-top: 20px; }
-        .icons-container { gap: 12px; margin-top: 25px; }
-        .icon-card { width: 100px; padding: 14px; font-size: 0.9em; }
-    }
-
-    @media(max-width:360px){
-        #header { font-size: 1.2em; margin-top: 15px; }
+        #header { font-size: 1.4em; margin-bottom: 15px; }
         .icon-card { width: 90px; padding: 12px; font-size: 0.85em; }
     }
 </style>
@@ -142,15 +136,15 @@
 <script>
     // Generar partículas dinámicas
     const background = document.getElementById('background');
-    const particleCount = 30;
+    const particleCount = 25;
 
     for(let i=0; i<particleCount; i++){
         const particle = document.createElement('div');
         particle.classList.add('particle');
         particle.style.left = Math.random() * 100 + 'vw';
-        particle.style.animationDuration = (10 + Math.random()*15) + 's';
-        particle.style.animationDelay = Math.random() * 10 + 's';
-        particle.style.width = particle.style.height = (4 + Math.random()*8) + 'px';
+        particle.style.animationDuration = (8 + Math.random()*12) + 's';
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.width = particle.style.height = (3 + Math.random()*6) + 'px';
         background.appendChild(particle);
     }
 </script>
