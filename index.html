@@ -3,35 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redes Sociales</title>
+<title>Redes Sociales Profesionales</title>
 <style>
+    /* ================= BODY ================= */
     body, html {
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
         height: 100%;
-        background: linear-gradient(135deg, #001a33, #003366);
+        width: 100%;
+        overflow-x: hidden;
         color: white;
         display: flex;
         flex-direction: column;
-        overflow-x: hidden;
+        align-items: center;
+        justify-content: flex-start;
+        background: #001a33;
+        position: relative;
     }
 
+    /* ================= HEADER ================= */
     #header {
-        padding: 25px;
+        margin-top: 40px;
         font-size: 2em;
         font-weight: bold;
         text-align: center;
-        animation: fadeIn 1.8s;
+        z-index: 2;
+        position: relative;
+        animation: fadeIn 1.5s ease-out;
     }
 
+    /* ================= ICONOS ================= */
     .icons-container {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         gap: 30px;
-        margin-top: 40px;
-        animation: slideUp 1.5s;
+        margin-top: 50px;
+        z-index: 2;
+        position: relative;
     }
 
     .icon-card {
@@ -40,88 +50,103 @@
         align-items: center;
         text-decoration: none;
         color: white;
-        background: rgba(255, 255, 255, 0.15);
-        padding: 20px;
+        padding: 22px;
         width: 140px;
         border-radius: 15px;
-        backdrop-filter: blur(6px);
-        transition: transform 0.3s, background 0.3s;
         font-weight: bold;
         text-align: center;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        backdrop-filter: blur(6px);
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+        background: rgba(255,255,255,0.15);
     }
 
     .icon-card:hover {
         transform: translateY(-10px) scale(1.05);
-        background: rgba(255, 255, 255, 0.25);
+        background: rgba(255,255,255,0.25);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.35);
     }
 
+    /* Colores específicos por red social */
+    .youtube { background: #FF0000; }
+    .instagram { background: #E1306C; }
+    .facebook { background: #3b5998; }
+    .x { background: #1DA1F2; }
+    .whatsapp { background: #25D366; }
+
+    /* ================= ANIMACIONES ================= */
     @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes slideUp {
-        from { transform: translateY(50px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Fondo animado */
+    /* ================= FONDO ANIMADO ================= */
     .background {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0;
         overflow: hidden;
-        z-index: -1;
+        background: linear-gradient(135deg, #001a33, #003366);
     }
 
-    .shape {
+    .particle {
         position: absolute;
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.15);
-        animation: floatShapes 12s linear infinite;
-        backdrop-filter: blur(2px);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.35);
+        animation: floatParticle linear infinite;
+        pointer-events: none;
+        box-shadow: 0 0 12px rgba(255,255,255,0.5);
     }
 
-    @keyframes floatShapes {
-        0% { transform: translateY(120vh) rotate(0deg); opacity: 0; }
-        10% { opacity: 1; }
-        100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+    @keyframes floatParticle {
+        0% { transform: translateY(110vh) translateX(0) scale(0.5); opacity: 0; }
+        10% { opacity: 0.7; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-10vh) translateX(20px) scale(1); opacity: 0; }
     }
 
-    @media (max-width: 600px) {
-        .icon-card {
-            width: 110px;
-            padding: 15px;
-        }
-        #header { font-size: 1.6em; padding: 18px; }
+    /* ================= RESPONSIVE ================= */
+    @media(max-width:600px){
+        #header { font-size: 1.6em; margin-top: 25px; }
+        .icon-card { width: 110px; padding: 16px; font-size: 0.95em; }
     }
 </style>
 </head>
 <body>
 
-<div class="background">
-    <div class="shape" style="left: 5%; animation-duration: 11s; animation-delay: 0s;"></div>
-    <div class="shape" style="left: 20%; animation-duration: 14s; animation-delay: 2s;"></div>
-    <div class="shape" style="left: 35%; animation-duration: 10s; animation-delay: 4s;"></div>
-    <div class="shape" style="left: 50%; animation-duration: 13s; animation-delay: 1s;"></div>
-    <div class="shape" style="left: 65%; animation-duration: 16s; animation-delay: 3s;"></div>
-    <div class="shape" style="left: 80%; animation-duration: 12s; animation-delay: 5s;"></div>
-</div>
+<!-- Fondo animado -->
+<div class="background" id="background"></div>
 
+<!-- Header -->
 <div id="header">Síguenos en Redes Sociales</div>
 
+<!-- Iconos -->
 <div class="icons-container">
-    <a class="icon-card" href="https://www.youtube.com/user/IDILSA" target="_blank" style="background:#FF0000;">YouTube</a>
-    <a class="icon-card" href="https://www.instagram.com/idilsa1998/" target="_blank" style="background:#E1306C;">Instagram</a>
-    <a class="icon-card" href="https://es-la.facebook.com/idilsa.ingenieriadisenolubricacion" target="_blank" style="background:#3b5998;">Facebook</a>
-    <a class="icon-card" href="https://x.com/idilsa" target="_blank" style="background:#1DA1F2;">X (Twitter)</a>
-    <a class="icon-card" href="https://api.whatsapp.com/send?phone=525546106384" target="_blank" style="background:#25D366;">WhatsApp</a>
+    <a class="icon-card youtube" href="https://www.youtube.com/user/IDILSA" target="_blank">YouTube</a>
+    <a class="icon-card instagram" href="https://www.instagram.com/idilsa1998/" target="_blank">Instagram</a>
+    <a class="icon-card facebook" href="https://es-la.facebook.com/idilsa.ingenieriadisenolubricacion" target="_blank">Facebook</a>
+    <a class="icon-card x" href="https://x.com/idilsa" target="_blank">X (Twitter)</a>
+    <a class="icon-card whatsapp" href="https://api.whatsapp.com/send?phone=525546106384" target="_blank">WhatsApp</a>
 </div>
+
+<script>
+    // Generar partículas de fondo dinámicamente
+    const background = document.getElementById('background');
+    const particleCount = 35;
+
+    for(let i=0; i<particleCount; i++){
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDuration = (10 + Math.random() * 15) + 's';
+        particle.style.animationDelay = (Math.random() * 10) + 's';
+        particle.style.width = particle.style.height = (5 + Math.random() * 10) + 'px';
+        background.appendChild(particle);
+    }
+</script>
 
 </body>
 </html>
