@@ -3,152 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redes Sociales Compacto</title>
+<title>IDILSA – Redes Sociales</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-    /* ================= BODY ================= */
-    body, html {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        height: 100%;
-        width: 100%;
-        overflow-x: hidden;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: #001a33;
-        position: relative;
-    }
+*{margin:0;padding:0;box-sizing:border-box}
 
-    /* ================= FONDO ANIMADO ================= */
-    .background {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        z-index: 0;
-        overflow: hidden;
-        background: linear-gradient(135deg, #001a33, #003366);
-    }
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#070b14;
+  color:#fff;
+  overflow-x:hidden;
+}
 
-    .particle {
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.25);
-        animation: floatParticle linear infinite;
-        pointer-events: none;
-        box-shadow: 0 0 8px rgba(255,255,255,0.4);
-    }
+/* ===== FONDO ONDAS ===== */
+#bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:radial-gradient(circle at 20% 30%,rgba(30,136,255,.15),transparent 40%),
+             radial-gradient(circle at 80% 70%,rgba(30,136,255,.12),transparent 45%);
+}
 
-    @keyframes floatParticle {
-        0% { transform: translateY(110vh) translateX(0) scale(0.5); opacity: 0; }
-        10% { opacity: 0.6; }
-        50% { opacity: 1; }
-        100% { transform: translateY(-10vh) translateX(20px) scale(1); opacity: 0; }
-    }
+.wave{
+  position:absolute;
+  width:200%;
+  height:200%;
+  background:conic-gradient(
+    from 180deg,
+    rgba(30,136,255,.18),
+    rgba(30,136,255,0),
+    rgba(30,136,255,.18)
+  );
+  animation:spin 22s linear infinite;
+  filter:blur(120px);
+}
 
-    /* ================= HEADER ================= */
-    #header {
-        font-size: 1.6em;
-        font-weight: bold;
-        text-align: center;
-        z-index: 2;
-        position: relative;
-        animation: fadeIn 1.5s ease-out;
-        margin-bottom: 20px;
-        padding: 0 15px;
-    }
+.wave:nth-child(2){
+  animation-duration:30s;
+  opacity:.6;
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+@keyframes spin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
 
-    /* ================= ICONOS ================= */
-    .icons-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        z-index: 2;
-        position: relative;
-    }
+/* ===== HEADER ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(5,8,15,.8);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:14px 22px;
+  display:flex;
+  justify-content:center;
+}
 
-    .icon-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        color: white;
-        padding: 14px;
-        min-width: 100px;
-        border-radius: 12px;
-        font-weight: bold;
-        text-align: center;
-        backdrop-filter: blur(5px);
-        transition: all 0.25s ease;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-        background: rgba(255,255,255,0.15);
-        font-size: 0.9em;
-    }
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none;
+}
 
-    .icon-card:hover {
-        transform: translateY(-5px) scale(1.03);
-        background: rgba(255,255,255,0.25);
-        box-shadow: 0 10px 22px rgba(0,0,0,0.3);
-    }
+.logo img{
+  height:42px;
+}
 
-    /* Colores específicos */
-    .youtube { background: #FF0000; }
-    .instagram { background: #E1306C; }
-    .facebook { background: #3b5998; }
-    .x { background: #1DA1F2; }
-    .whatsapp { background: #25D366; }
+.logo span{
+  color:#1e88ff;
+  font-weight:800;
+  font-size:1.3rem;
+  letter-spacing:.6px;
+}
 
-    /* ================= RESPONSIVE MOVIL ================= */
-    @media(max-width:480px){
-        #header { font-size: 1.4em; margin-bottom: 15px; }
-        .icon-card { width: 90px; padding: 12px; font-size: 0.85em; }
-    }
+/* ===== CONTENIDO ===== */
+.container{
+  padding:90px 20px 70px;
+  text-align:center;
+}
+
+.container h1{
+  font-size:2.1rem;
+  font-weight:800;
+  color:#1e88ff;
+  margin-bottom:12px;
+}
+
+.container p{
+  color:#cfd8e3;
+  max-width:440px;
+  margin:0 auto 44px;
+  line-height:1.55;
+}
+
+/* ===== BOTONES ===== */
+.social-box{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  max-width:360px;
+  margin:auto;
+}
+
+.btn-social{
+  padding:17px;
+  border-radius:18px;
+  font-weight:700;
+  font-size:.95rem;
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+
+.btn-social:hover{
+  transform:translateY(-5px);
+  background:rgba(30,136,255,.18);
+  box-shadow:0 26px 60px rgba(0,0,0,.65);
+}
+
+/* ===== ACENTOS POR RED ===== */
+.youtube{border-left:4px solid #ff0000}
+.instagram{border-left:4px solid #e1306c}
+.facebook{border-left:4px solid #1877f2}
+.x{border-left:4px solid #000}
+.whatsapp{border-left:4px solid #25d366}
+
+/* ===== FOOTER ===== */
+footer{
+  margin-top:70px;
+  text-align:center;
+  color:#8fa3bf;
+  font-size:.85rem;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:480px){
+  .container h1{font-size:1.9rem}
+  .logo img{height:38px}
+}
 </style>
 </head>
+
 <body>
 
-<!-- Fondo animado -->
-<div class="background" id="background"></div>
-
-<!-- Header -->
-<div id="header">Síguenos en Redes Sociales</div>
-
-<!-- Iconos -->
-<div class="icons-container">
-    <a class="icon-card youtube" href="https://www.youtube.com/user/IDILSA" target="_blank">YouTube</a>
-    <a class="icon-card instagram" href="https://www.instagram.com/idilsa1998/" target="_blank">Instagram</a>
-    <a class="icon-card facebook" href="https://es-la.facebook.com/idilsa.ingenieriadisenolubricacion" target="_blank">Facebook</a>
-    <a class="icon-card x" href="https://x.com/idilsa" target="_blank">X (Twitter)</a>
-    <a class="icon-card whatsapp" href="https://api.whatsapp.com/send?phone=525546106384" target="_blank">WhatsApp</a>
+<!-- FONDO -->
+<div id="bg">
+  <div class="wave"></div>
+  <div class="wave"></div>
 </div>
 
-<script>
-    // Generar partículas dinámicas
-    const background = document.getElementById('background');
-    const particleCount = 25;
+<header>
+  <a href="#" class="logo">
+    <img src="https://i.ibb.co/hRmLJ1QP/Whats-App-Image-2025-12-09-at-11-26-34-PM.jpg" alt="IDILSA">
+    <span>IDILSA</span>
+  </a>
+</header>
 
-    for(let i=0; i<particleCount; i++){
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = Math.random() * 100 + 'vw';
-        particle.style.animationDuration = (8 + Math.random()*12) + 's';
-        particle.style.animationDelay = Math.random() * 8 + 's';
-        particle.style.width = particle.style.height = (3 + Math.random()*6) + 'px';
-        background.appendChild(particle);
-    }
-</script>
+<section class="container">
+  <h1>Redes Sociales Oficiales</h1>
+  <p>Síguenos y conoce más sobre nuestros proyectos, soluciones industriales y experiencia en lubricación.</p>
+
+  <div class="social-box">
+    <a class="btn-social youtube" href="https://www.youtube.com/user/IDILSA" target="_blank">YouTube</a>
+    <a class="btn-social instagram" href="https://www.instagram.com/idilsa1998/" target="_blank">Instagram</a>
+    <a class="btn-social facebook" href="https://es-la.facebook.com/idilsa.ingenieriadisenolubricacion" target="_blank">Facebook</a>
+    <a class="btn-social x" href="https://x.com/idilsa" target="_blank">X</a>
+    <a class="btn-social whatsapp" href="https://api.whatsapp.com/send?phone=525546106384" target="_blank">WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 IDILSA — Ingeniería & Diseño en Lubricación
+</footer>
 
 </body>
 </html>
-
